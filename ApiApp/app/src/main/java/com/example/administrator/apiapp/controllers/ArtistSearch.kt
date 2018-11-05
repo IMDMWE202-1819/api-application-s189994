@@ -58,13 +58,14 @@ class ArtistSearch : Activity() {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if ( s != null && s.length >= 2) {
-                print("in OnTextChanged")
                 async.get("https://api.deezer.com/search/artist?q=$s", onResponse = {
                     val result: DeezerSearchResult = Klaxon()
                                                         .converter(ArtistConverter())
                                                         .parse(this.text)!!
 
                     // 3a
+                    artists.clear()
+
                     for (artist in result.data) {
                         artists.add(artist)
                     }
@@ -76,7 +77,7 @@ class ArtistSearch : Activity() {
                     // 3a. loop through result.data
                     // 3b. add each artist to the artists list
                     // We need to get the information from the text format into the ArtistData from DeezerSearchResult.kt
-                    runOnUiThread {  }
+                    runOnUiThread { onDataChanged()  }
                 } )
             }
         }

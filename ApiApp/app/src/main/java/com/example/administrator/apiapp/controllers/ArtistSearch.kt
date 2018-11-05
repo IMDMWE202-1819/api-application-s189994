@@ -62,6 +62,7 @@ class ArtistSearch : Activity() {
                     val result: DeezerSearchResult = Klaxon()
                                                         .converter(ArtistConverter())
                                                         .parse(this.text)!!
+
                     artists.clear()
 
                     for (artist in result.data) {

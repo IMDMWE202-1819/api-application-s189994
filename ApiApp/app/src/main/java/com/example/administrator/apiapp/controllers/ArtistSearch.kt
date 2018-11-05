@@ -23,7 +23,7 @@ class ArtistSearch : Activity() {
 
     val artists = arrayListOf<ArtistData>()
     var adapter: ArtistAdapter = ArtistAdapter(artists, this) {
-        val intent = Intent(this, MainActivity::class.java).apply {
+        val intent = Intent(this, ArtistPage::class.java).apply {
             putExtra(EXTRA_ARTIST, it)
         }
 
@@ -62,21 +62,12 @@ class ArtistSearch : Activity() {
                     val result: DeezerSearchResult = Klaxon()
                                                         .converter(ArtistConverter())
                                                         .parse(this.text)!!
-
-                    // 3a
                     artists.clear()
 
                     for (artist in result.data) {
                         artists.add(artist)
                     }
 
-                    // use Klaxon (https://github.com/cbeust/klaxon for documentation) to parse the text value we get back from Deezer.
-                    // 1. add klaxon implementation to build.gradle (Module: app) + sync (done)
-                    // 2. Klaxon().parse<ArtistData>(this.text)
-                    // 3. store results into a list of ArtistData
-                    // 3a. loop through result.data
-                    // 3b. add each artist to the artists list
-                    // We need to get the information from the text format into the ArtistData from DeezerSearchResult.kt
                     runOnUiThread { onDataChanged()  }
                 } )
             }

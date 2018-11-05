@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.example.administrator.apiapp">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.administrator.apiapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -16,8 +17,13 @@
         <activity android:name=".controllers.ArtistSearch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+                android:name=".controllers.ArtistPage"
+                android:label="@string/title_activity_artist_page">
         </activity>
     </application>
 

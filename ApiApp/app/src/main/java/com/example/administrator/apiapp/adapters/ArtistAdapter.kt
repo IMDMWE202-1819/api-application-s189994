@@ -26,13 +26,17 @@ class ArtistAdapter(private val data:List<ArtistData>, private val context:Conte
     }
 
     inner class ArtistHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val artistImage = itemView.findViewById<ImageView>(R.id.artist_list_imageView)
+        val artistImage = itemView.findViewById<ImageView>(R.id.artistListImage)
         val artistName = itemView.findViewById<TextView>(R.id.artist_list_textView)
 
         fun bindArtist(artist:ArtistData?) {
             if ( artist == null ) return
-            artistName.text = artist.name
-            Picasso.get().load(artist.picture_big).into(artistImage)
+
+            if ( artistName != null)
+                artistName.text = artist.name
+
+            if (artistImage != null)
+                Picasso.get().load(artist.picture_big).into(artistImage)
 
             itemView.setOnClickListener {onArtistClick(artist)}
         }

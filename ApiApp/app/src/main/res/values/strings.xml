@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">ApiApp</string>
     <string name="title_activity_artist_search">ArtistSearch</string>
+    <string name="title_activity_artist_information">ArtistInformation</string>
+    <string name="title_activity_artist_page">ArtistPage</string>
 </resources>

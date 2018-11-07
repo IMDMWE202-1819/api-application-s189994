@@ -8,24 +8,20 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DeezerAlbumResult(
-    val name: String,
-    val age: Int,
-    val email: String,
-    val phone: Long
-): Parcelable
-
+    val data: List<AlbumData>,
+    val next: String? = null,
+    val prev: String? = null,
+    val total: Int
+) : Parcelable
 
 @Parcelize
 data class AlbumData(
-
-    val id: String?,
-    val title: String?,
-    val cover: String?,
-    val nb_fan: Int?,
-    val cover_small: String?,
-    val cover_medium: String?,
-    val cover_big: String?
-) : Parcelable
+    val cover_big: String,
+    val id: String,
+    val release_date: String,
+    val title: String,
+    val tracklist: String
+): Parcelable
 
 class AlbumConverter: Converter {
     override fun canConvert(cls: Class<*>): Boolean {
@@ -37,13 +33,11 @@ class AlbumConverter: Converter {
 
         if (album != null) {
         return AlbumData(
-                album.int("id").toString(),
-                album.string("title"),
-                album.string("cover"),
-                album.int("nb_fan"),
-                album.string("cover_small"),
-                album.string("cover_medium"),
-                album.string("cover_big")
+                album["cover_big"].toString(),
+                album["id"].toString(),
+                album["release_date"].toString(),
+                album["title"].toString(),
+                album["tracklist"].toString()
             )
         }
         return "invalid"

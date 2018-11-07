@@ -20,6 +20,7 @@ const val EXTRA_ALBUM = "album"
 class ArtistPage : Activity() {
 
     val albums = arrayListOf<AlbumData>()
+    lateinit var artist:ArtistData
     var adapter: AlbumAdapter = AlbumAdapter(albums, this) {
         val intent = Intent(this, MainActivity::class.java).apply {intent
             putExtra(EXTRA_ALBUM, booleanArrayOf())
@@ -32,7 +33,7 @@ class ArtistPage : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_artist_page)
 
-        val artist = intent.getParcelableExtra<ArtistData>(EXTRA_ARTIST)
+        artist = intent.getParcelableExtra<ArtistData>(EXTRA_ARTIST)
 
         Picasso.get().load(artist.picture_big).into(artist_imageView)
         artist_list_textView.text = artist.name
@@ -48,22 +49,25 @@ class ArtistPage : Activity() {
         albumRecyclerView.layoutManager = GridLayoutManager(this, spanCount)
         albumRecyclerView.adapter = adapter
 
+        retrieveAlbums()
+
     }
 
-    if (AlbumData != null) {
-        get("https://api.deezer.com/artist/27/albums", onResponse = {
-            val result: DeezerSearchResult = Klaxon()
-                    .converter( AlbumConverter())
-                    .parse(this.text)!!
+    private fun retrieveAlbums() {
+        get("https://api.deezer.com/artist/${artist.id}/albums", onResponse = {
+            val result: DeezerAlbumResult = Klaxon()
+                .converter(AlbumConverter())
+                .parse(this.text)!!
 
-    albums.clear()
+            albums.clear()
 
-        for (artist in result.data) {
-            albums.add(data)
-        }
+            for (album in result.data) {
+                albums.add(album)
+            }
+
+            runOnUiThread { adapter.notifyDataSetChanged() }
+        })
     }
-
-        runOnUiThread {()}
-    }}
+}
 
 

@@ -25,6 +25,8 @@
                 android:name=".controllers.ArtistPage"
                 android:label="@string/title_activity_artist_page">
         </activity>
+        <activity android:name=".controllers.AlbumPage">
+        </activity>
     </application>
 
 </manifest>

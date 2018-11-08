@@ -10,7 +10,6 @@ import com.example.administrator.apiapp.R
 import com.example.administrator.apiapp.adapters.AlbumAdapter
 import com.example.administrator.apiapp.models.*
 import com.squareup.picasso.Picasso
-import khttp.async
 import khttp.async.Companion.get
 import kotlinx.android.synthetic.main.activity_artist_page.*
 
@@ -22,7 +21,7 @@ class ArtistPage : Activity() {
     val albums = arrayListOf<AlbumData>()
     lateinit var artist:ArtistData
     var adapter: AlbumAdapter = AlbumAdapter(albums, this) {
-        val intent = Intent(this, MainActivity::class.java).apply {intent
+        val intent = Intent(this, AlbumPage::class.java).apply {intent
             putExtra(EXTRA_ALBUM, booleanArrayOf())
         }
 

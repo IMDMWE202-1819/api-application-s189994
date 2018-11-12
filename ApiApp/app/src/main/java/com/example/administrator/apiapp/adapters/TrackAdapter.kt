@@ -25,13 +25,14 @@ class TrackAdapter (private val data:List<TrackData>,private val context: Contex
     }
 
     inner class TrackHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         val trackName = itemView.findViewById<TextView>(R.id.track_list_textView)
 
         fun bindTrack(track: TrackData?) {
             if (track == null) return
 
             if (trackName != null)
-                trackName.text = track.title
+                trackName.text = "${track.track_position}. ${track.title}"
 
 
             itemView.setOnClickListener { onTrackClick(track) }

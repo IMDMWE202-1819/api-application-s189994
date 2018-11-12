@@ -20,7 +20,8 @@ data class TrackData(
     val id: String,
     val preview: String,
     val rank: String,
-    val title: String
+    val title: String,
+    val track_position: String
 ):Parcelable
 
  class TrackConverter : Converter {
@@ -36,9 +37,10 @@ data class TrackData(
              return TrackData(
                  track["duration"].toString(),
                  track["id"].toString(),
-                 track["title"].toString(),
+                 track["preview"].toString(),
                  track["rank"].toString(),
-                 track["preview"].toString()
+                 track["title"].toString(),
+                 track["track_position"]. toString()
              )
          }
 

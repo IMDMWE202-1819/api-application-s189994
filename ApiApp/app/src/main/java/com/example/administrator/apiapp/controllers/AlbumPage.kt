@@ -1,8 +1,9 @@
 package com.example.administrator.apiapp.controllers
 
+import android.app.Activity
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import com.beust.klaxon.Klaxon
 import com.example.administrator.apiapp.R
 import com.example.administrator.apiapp.adapters.TrackAdapter
@@ -14,16 +15,12 @@ import kotlinx.android.synthetic.main.activity_album_page.*
 
     const val EXTRA_TRACK= "track"
 
-class AlbumPage : AppCompatActivity() {
+class AlbumPage : Activity() {
 
     val tracks = arrayListOf<TrackData>()
     lateinit var album:AlbumData
     var adapter: TrackAdapter = TrackAdapter (tracks,this ) {
-        val intent = Intent(this, MainActivity::class.java).apply {intent
-            putExtra(EXTRA_TRACK, booleanArrayOf())
-        }
 
-        startActivity(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +33,8 @@ class AlbumPage : AppCompatActivity() {
         album_textView.text = album.title
 
         trackRecyclerView.adapter = adapter
+
+        trackRecyclerView.layoutManager = LinearLayoutManager(this)
 
         retrieveTracks()
     }

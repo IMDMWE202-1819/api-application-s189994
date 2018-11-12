@@ -21,8 +21,8 @@ class ArtistPage : Activity() {
     val albums = arrayListOf<AlbumData>()
     lateinit var artist:ArtistData
     var adapter: AlbumAdapter = AlbumAdapter(albums, this) {
-        val intent = Intent(this, AlbumPage::class.java).apply {intent
-            putExtra(EXTRA_ALBUM, booleanArrayOf())
+        val intent = Intent(this, AlbumPage::class.java).apply {
+            putExtra(EXTRA_ALBUM, it)
         }
 
         startActivity(intent)

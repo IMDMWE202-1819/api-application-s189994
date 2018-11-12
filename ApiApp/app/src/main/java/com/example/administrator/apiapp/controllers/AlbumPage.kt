@@ -31,6 +31,8 @@ class AlbumPage : Activity() {
 
         Picasso.get().load(album.cover_big).into(album_imageView)
         album_textView.text = album.title
+        release_date_textView3.text = "Release Date: " + "" + album.release_date
+
 
         trackRecyclerView.adapter = adapter
 

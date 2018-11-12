@@ -50,6 +50,7 @@ class ArtistPage : Activity() {
         if (orientation == Configuration.ORIENTATION_LANDSCAPE)
             spanCount = 3
 
+
         albumRecyclerView.layoutManager = GridLayoutManager(this, spanCount)
         albumRecyclerView.adapter = adapter
 

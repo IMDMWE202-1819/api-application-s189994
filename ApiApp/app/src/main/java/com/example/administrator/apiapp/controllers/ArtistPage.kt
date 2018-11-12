@@ -1,6 +1,5 @@
 package com.example.administrator.apiapp.controllers
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration

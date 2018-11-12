@@ -38,6 +38,7 @@ class ArtistAdapter(private val data:List<ArtistData>, private val context:Conte
             if (artistImage != null)
                 Picasso.get().load(artist.picture_big).into(artistImage)
 
+
             itemView.setOnClickListener {onArtistClick(artist)}
         }
     }

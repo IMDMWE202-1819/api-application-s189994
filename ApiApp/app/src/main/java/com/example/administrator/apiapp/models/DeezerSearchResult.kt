@@ -36,13 +36,13 @@ class ArtistConverter : Converter {
         if (artist != null) {
             return ArtistData(
                 artist.int("id").toString(),
-                artist.string("link"),
-                artist.string("name"),
-                artist.int("nb_album"),
-                artist.int("nb_fan"),
-                artist.string("picture"),
-                artist.string("picture_big"),
-                artist.string("picture_medium")
+                artist.string("link").toString(),
+                artist.string("name").toString(),
+                artist.int("nb_album")?.toInt(),
+                artist.int("nb_fan")?.toInt(),
+                artist.string("picture").toString(),
+                artist.string("picture_big").toString(),
+                artist.string("picture_medium").toString()
             )
         }
 

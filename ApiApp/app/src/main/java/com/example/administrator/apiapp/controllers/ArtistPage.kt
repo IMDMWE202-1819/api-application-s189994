@@ -1,5 +1,6 @@
 package com.example.administrator.apiapp.controllers
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
@@ -28,6 +29,7 @@ class ArtistPage : Activity() {
         startActivity(intent)
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_artist_page)
@@ -36,6 +38,10 @@ class ArtistPage : Activity() {
 
         Picasso.get().load(artist.picture_big).into(artist_imageView)
         artist_list_textView.text = artist.name
+        fans_textView2.text = "Number of Fans: " + "" + artist.nb_fan.toString()
+        nb_albums_textView3.text = "Number of Albums: " + "" + artist.nb_album.toString()
+        link_textView5.text = "Link for Artist: " + "" + artist.link.toString()
+
 
 
         val orientation = resources.configuration.orientation

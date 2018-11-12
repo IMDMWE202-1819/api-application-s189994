@@ -9,30 +9,38 @@
         android:background="@android:color/black">
 
     <ImageView
-            android:layout_width="149dp"
-            android:layout_height="140dp" tools:srcCompat="@tools:sample/avatars"
-            android:id="@+id/album_imageView" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/trackRecyclerView" android:layout_marginTop="8dp"
+            android:layout_width="192dp"
+            android:layout_height="185dp" tools:srcCompat="@tools:sample/avatars"
+            android:id="@+id/album_imageView"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp" app:layout_constraintVertical_bias="0.0"/>
+            android:layout_marginStart="4dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.18"/>
     <TextView
             android:text="TextView"
-            android:layout_width="177dp"
-            android:layout_height="134dp"
+            android:layout_width="172dp"
+            android:layout_height="100dp"
             android:id="@+id/album_textView"
-            android:layout_marginTop="8dp"
-            android:textSize="24sp"
-            android:textColor="@android:color/white" android:textStyle="bold" android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@+id/album_imageView"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="4dp" app:layout_constraintEnd_toStartOf="@+id/trackRecyclerView"
-            app:layout_constraintVertical_bias="0.243"/>
+            android:textSize="30sp"
+            android:textColor="@android:color/white" android:textStyle="bold" android:textAlignment="textStart"
+            app:layout_constraintTop_toBottomOf="@+id/album_imageView" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/trackRecyclerView" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="290dp"
+            android:layout_height="30dp"
+            android:id="@+id/release_date_textView3"
+            app:layout_constraintTop_toBottomOf="@+id/album_textView" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="44dp" android:textSize="18sp" android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/trackRecyclerView" android:layout_marginEnd="79dp"
+            android:layout_marginBottom="19dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.083" app:layout_constraintVertical_bias="1.0"/>
     <android.support.v7.widget.RecyclerView
-            android:layout_width="572dp"
+            android:layout_width="395dp"
             android:layout_height="311dp"
             android:id="@+id/trackRecyclerView"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.957"
-            android:layout_marginBottom="16dp"/>
+    >
+    </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

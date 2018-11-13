@@ -41,7 +41,7 @@ class ArtistSearch : Activity() {
         var spanCount = 2
 
         if ( orientation == Configuration.ORIENTATION_LANDSCAPE)
-            spanCount = 3
+            spanCount = 2
 
 
         artistRecyclerView.layoutManager = GridLayoutManager(this, spanCount)

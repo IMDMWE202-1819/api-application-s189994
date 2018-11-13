@@ -22,8 +22,8 @@
             android:lineSpacingExtra="10sp"/>
     <ImageView
             android:src="@drawable/deezer_logo_circle"
-            android:layout_width="263dp"
-            android:layout_height="211dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:id="@+id/DeezerPicture"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.499" app:layout_constraintEnd_toEndOf="parent"
@@ -41,8 +41,8 @@
             tools:paddingLeft="20dp" android:paddingRight="20dp" tools:paddingBottom="50dp"/>
     <TextView
             android:text=" API"
-            android:layout_width="207dp"
-            android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:id="@+id/textView" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"

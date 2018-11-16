@@ -6,15 +6,15 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.JsonValue
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class DeezerSearchResult(
+@Parcelize //function Parcelize - for easier pulling data
+data class DeezerSearchResult( //the result as a list, and like a queue
     val data: List<ArtistData>,
     val next: String? = null,
     val total: Int
 ) : Parcelable
 
 @Parcelize
-data class ArtistData(
+data class ArtistData( //the album data from the API
     val id: String?,
     val link: String?,
     val name: String?,
@@ -25,7 +25,7 @@ data class ArtistData(
     val picture_medium: String?
 ) : Parcelable
 
-class ArtistConverter : Converter {
+class ArtistConverter : Converter { //making the converter
     override fun canConvert(cls: Class<*>): Boolean {
         return cls == ArtistData::class.java
     }
@@ -33,7 +33,7 @@ class ArtistConverter : Converter {
     override fun fromJson(jv: JsonValue): Any {
         val artist: JsonObject? = jv.obj
 
-        if (artist != null) {
+        if (artist != null) { //if the search data is with empty data , then send response for these 6 strings and 2 ints
             return ArtistData(
                 artist.int("id").toString(),
                 artist.string("link").toString(),
@@ -47,7 +47,7 @@ class ArtistConverter : Converter {
         }
 
         return "invalid"
-    }
+    } // if the album data is nothing, return "invalid"
 
     override fun toJson(value: Any): String {
         return "{}"

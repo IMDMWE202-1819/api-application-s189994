@@ -6,7 +6,7 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.JsonValue
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+@Parcelize //same as the searchResult model and AlbumResult model. Only the data names are different
 data class DeezerTrackResult(
     val `data`: List<TrackData>,
     val next: String? = null,

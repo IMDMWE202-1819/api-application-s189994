@@ -17,14 +17,15 @@ import khttp.async
 
 import kotlinx.android.synthetic.main.activity_artist_search.*
 
-const val EXTRA_ARTIST = "artist"
+const val EXTRA_ARTIST = "artist" // artist value for the intent
 
 class ArtistSearch : Activity() {
 
-    val artists = arrayListOf<ArtistData>()
-    var adapter: ArtistAdapter = ArtistAdapter(artists, this) {
+    val artists = arrayListOf<ArtistData>() //making an empty array list for being able to put data in it.
+    var adapter: ArtistAdapter = ArtistAdapter(artists, this) { //Applying the adapter for the page
+        //transition from one page to another - INTENT
         val intent = Intent(this, ArtistPage::class.java).apply {
-            putExtra(EXTRA_ARTIST, it)
+            putExtra(EXTRA_ARTIST, it) //adds the Artist's value to the intent
         }
 
         startActivity(intent)
@@ -33,9 +34,8 @@ class ArtistSearch : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_artist_search)
-
         SearchBar.addTextChangedListener(SearchBarWatcher())
-
+//setting the orientation - how many pictures(with names) should show the result shows
         val orientation = resources.configuration.orientation
 
         var spanCount = 2
@@ -51,23 +51,23 @@ class ArtistSearch : Activity() {
     fun onDataChanged() {
         adapter.notifyDataSetChanged()
     }
-
+//function for text changing = result changing
     inner class SearchBarWatcher : TextWatcher {
         override fun afterTextChanged(s: Editable?) { }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
-
+//when more than 2 letters => get response
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if ( s != null && s.length >= 2) {
                 async.get("https://api.deezer.com/search/artist?q=$s", onResponse = {
                     val result: DeezerSearchResult = Klaxon()
                                                         .converter(ArtistConverter())
-                                                        .parse(this.text)!!
+                                                        .parse(this.text)!! //show
 
-                    artists.clear()
+                    artists.clear() //result changes as it removes the past data from the page and puts only new one
 
                     for (artist in result.data) {
-                        artists.add(artist)
+                        artists.add(artist) //adding an artist data response
                     }
 
                     runOnUiThread { onDataChanged()  }

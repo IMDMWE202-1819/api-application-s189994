@@ -13,12 +13,13 @@ import khttp.async.Companion.get
 import kotlinx.android.synthetic.main.activity_album_page.*
 
 
-    const val EXTRA_TRACK= "track"
+
 
 class AlbumPage : Activity() {
 
-    val tracks = arrayListOf<TrackData>()
-    lateinit var album:AlbumData
+    val tracks = arrayListOf<TrackData>() //empty list of tracks
+    lateinit var album:AlbumData //backing field that stores the data
+
     var adapter: TrackAdapter = TrackAdapter (tracks,this ) {
 
     }
@@ -29,9 +30,9 @@ class AlbumPage : Activity() {
 
         album = intent.getParcelableExtra<AlbumData>(EXTRA_ALBUM)
 
-        Picasso.get().load(album.cover_big).into(album_imageView)
+        Picasso.get().load(album.cover_big).into(album_imageView) //picasso function for visualising the pictures
         album_textView.text = album.title
-        release_date_textView3.text = "Release Date: " + "" + album.release_date
+        release_date_textView3.text = "Release Date: " + "" + album.release_date //more data for show
 
 
         trackRecyclerView.adapter = adapter
@@ -40,17 +41,17 @@ class AlbumPage : Activity() {
 
         retrieveTracks()
     }
-
-    private fun retrieveTracks () {
+//get request
+    private fun retrieveTracks () { //make request
             get("https://api.deezer.com/album/${album.id}/tracks", onResponse = {
                 val result: DeezerTrackResult = Klaxon()
                     .converter(TrackConverter())
                     .parse(this.text)!!
 
-                tracks.clear()
+                tracks.clear() //clearing the result
 
                 for (track: TrackData in result.data) {
-                    tracks.add(track)
+                    tracks.add(track) //adding data to result
                 }
 
                 runOnUiThread { adapter.notifyDataSetChanged()}
